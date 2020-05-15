@@ -4,14 +4,14 @@ require 'Modele/Modele.php';
 
 // Affiche la liste de tous les comptes
 function accueil() {
-    $comptes = getArticles();
+    $comptes = getComptes();
     require 'Vue/vueAccueil.php';
 }
 
 // Affiche les détails sur un article
-function compte($idCompte, $erreur) {
+function compte($idCompte) {
     $compte = getArticle($idCompte);
-    $commentaires = getCommentaires($idCompte);
+    //$commentaires = getCommentaires($idCompte);
     require 'Vue/vueArticle.php';
 }
 
@@ -46,15 +46,33 @@ function supprimer($id) {
     header('Location: index.php?action=article&id=' . $commentaire['article_id']);
 }
 
-function nouvelArticle() {
+function nouveauCompte($erreur) {
     require 'Vue/vueAjouterCompte.php';
 //    header('Location: Vue/vueAjouterCompte.php');
 }
 
 // Enregistre le nouvel article et retourne à l'accueil
-function ajouter($article) {
-    setArticle($article);
-    header('Location: index.php');
+function ajouter($compte) {
+    $validation_courriel = filter_var($compte['EmailCompte'], FILTER_VALIDATE_EMAIL);
+    $validation_montant = filter_var($compte['Balance'], FILTER_VALIDATE_INT);
+//    if($validation_courriel){
+//        setCompte($compte);
+//        header('Location: index.php');
+//    } else {
+//        header('Location: index.php?action=nouveauCompte' . $compte['ID_Compte'] . '&erreur=courriel');
+//    }
+//    if(!$validation_montant){
+//        header('Location: index.php?action=nouveauCompte' . $compte['ID_Compte'] . '&erreur=montant');
+//    }
+    if(!$validation_courriel) {
+        header('Location: index.php?action=nouveauCompte' . '&erreur=courriel');
+    } else if(!$validation_montant) {
+        header('Location: index.php?action=nouveauCompte' . '&erreur=montant');
+    } else {
+        setCompte($compte);
+        header('Location: index.php');
+    }
+    
 }
 
 // recherche et retourne les types pour l'autocomplete

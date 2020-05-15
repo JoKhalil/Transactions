@@ -34,7 +34,8 @@ CREATE TABLE `compte` (
   `NomCompte` varchar(50) NOT NULL,
   `Balance` double NOT NULL,
   `MotDePasse` varchar(16) NOT NULL,
-  `TypeDeCompte` enum('Chèque','Épargne','Crédit') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+  `TypeDeCompte` enum('Chèque','Épargne','Crédit') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `EmailCompte` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

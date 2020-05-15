@@ -32,21 +32,24 @@ $action = $_GET['action'];
 try {
     if (isset($action)) {
         
-        if ($action == 'nouvelArticle') {
-            nouvelArticle();
-            
-        } else if ($action == 'compte'){
+        if ($action == 'compte'){
             if (isset($_GET['ID_Compte'])){
                 $id = intval($_GET['ID_Compte']);
                 if ($id != 0){
-                    $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
-                    compte($id, $erreur);
+                    
+                    compte($id);
                 } else {
                     throw new Exception("Identifiant de compte incorrect");
                 } 
             } else {
                 throw new Exception("Aucun identifiant de compte");
             }
+        } else if ($action == 'nouveauCompte') {
+            $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
+            nouveauCompte($erreur);
+        } else if ($action == 'ajouter') {
+            $compte = $_POST;
+            ajouter($compte);
         }
     } else {
         accueil();
@@ -86,6 +89,3 @@ try {
 //$reponse->closeCursor();
 
 ?>
-    </body>
-</html>
-

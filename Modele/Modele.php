@@ -8,17 +8,17 @@ function getBdd() {
 }
 
 // Renvoie la liste de tous les comptes, triés par identifiant décroissant
-function getArticles() {
+function getComptes() {
     $bdd = getBdd();
     $comptes = $bdd->query('SELECT * FROM compte ORDER BY ID_Compte DESC LIMIT 0, 10');
     return $comptes;
 }
 
 // Renvoie la liste de tous les comptes, triés par identifiant décroissant
-function setArticle($compteTemp) {
+function setCompte($compteTemp) {
     $bdd = getBdd();
-    $result = $bdd->prepare('INSERT INTO compte (NomCompte, TypeDeCompte, ID_Utilisateur, Balance, MotDePasse) VALUES(?, ?, ?, ?, ?)');
-    $result->execute(array($compteTemp[NomCompte], $compteTemp[TypeDeCompte], $compteTemp[ID_Utilisateur], $compteTemp[Balance], $compteTemp[MotDePasse]));
+    $result = $bdd->prepare('INSERT INTO compte (NomCompte, TypeDeCompte, ID_Utilisateur, Balance, MotDePasse, EmailCompte) VALUES(?, ?, ?, ?, ?, ?)');
+    $result->execute(array($compteTemp[NomCompte], $compteTemp[TypeDeCompte], $compteTemp[ID_Utilisateur], $compteTemp[Balance], $compteTemp[MotDePasse], $compteTemp[EmailCompte]));
     return $result;
 }
 

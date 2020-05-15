@@ -7,12 +7,13 @@
     
         <h3 class="">Compte : <?= $compte['TypeDeCompte'] ?></h3>
     </header>
+    <p>Courriel du compte : <?= $compte['EmailCompte'] ?></p>
     <p>Balance : <?= $compte['Balance'] ?></p>
     <p>Mot de passe : <?= $compte['MotDePasse']?></p>
 </article>
 <hr />
 <header>
-    <h1 id="titreReponses">Réponses à <?= $compte['NomCompte'] ?> :</h1>
+    <h1 id="titreReponses">Paiements du compte <?= $compte['NomCompte'] ?> :</h1>
 </header>
 <?php foreach ($paiements as $paiement): ?>
 <p><a href="index.php?action=confirmer&ID=<?= $paiement['ID'] ?>" >
