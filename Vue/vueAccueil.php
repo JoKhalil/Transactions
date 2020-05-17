@@ -1,4 +1,4 @@
-<?php $titre = 'Les comptes de Joseph'; ?>
+<?php $this->$titre = 'Les comptes de Joseph'; ?>
 
 <?php ob_start(); ?>
 <a href="index.php?action=nouveauCompte">

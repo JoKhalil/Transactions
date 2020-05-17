@@ -1,13 +1,15 @@
 <?php
 
-require 'Controleur/Controleur.php';
-$action = $_GET['action'];
+require 'Controleur/Routeur.php';
+
+$routeur = new Routeur();
+$routeur->routeurRequete();
 // Connexion à la base de données
 
 try {
-    if (isset($action)) {
-        
-        if ($action == 'compte'){
+    if (isset($_GET['action'])) {
+        $actions = $_GET['action'];
+        if ($actions == 'compte'){
             if (isset($_GET['ID_Compte'])){
                 $id = intval($_GET['ID_Compte']);
                 if ($id != 0){
@@ -20,15 +22,15 @@ try {
                 throw new Exception("Aucun identifiant de compte");
             }
             
-        } else if ($action == 'nouveauCompte') {
+        } else if ($actions == 'nouveauCompte') {
             $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
             nouveauCompte($erreur);
             
-        } else if ($action == 'ajouter') {
+        } else if ($actions == 'ajouter') {
             $compte = $_POST;
             ajouter($compte);
             
-        } else if ($action == 'paiement') {
+        } else if ($actions == 'paiement') {
             if (isset($_POST['ID_Compte'])) {
                 // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
                 $id = intval($_POST['ID_Compte']);
@@ -44,7 +46,7 @@ try {
             } else
                 throw new Exception("Aucun identifiant de compte");
             
-        } else if ($action == 'supprimer') {
+        } else if ($actions == 'supprimer') {
             if (isset($_POST['ID'])) {
                 
                 $id = intval($_POST['ID']);
@@ -56,7 +58,7 @@ try {
             } else {
                 throw new Exception("Aucun identifiant de paiement");
             }
-        } else if ($action == 'confirmer') {
+        } else if ($actions == 'confirmer') {
             if (isset($_GET['ID'])) {
                 
                 $id = intval($_GET['ID']);
@@ -68,7 +70,7 @@ try {
             } else {
                 throw new Exception("Aucun identifiant de paiement");
             }
-        } else if ($action == 'modifier') {
+        } else if ($actions == 'modifier') {
             if (isset($_GET['ID'])) {
                 
                 $id = intval($_GET['ID']);
@@ -80,7 +82,7 @@ try {
             } else {
                 throw new Exception("Aucun identifiant de paiement");
             }
-        } else if ($action == 'confirmerModifier') {
+        } else if ($actions == 'confirmerModifier') {
             if (isset($_POST['ID'])) {
                 
                 $id = intval($_POST['ID']);

@@ -12,7 +12,7 @@ function accueil() {
 function compte($idCompte) {
     $compte = getCompte($idCompte);
     $paiements = getPaiements($idCompte);
-    require 'Vue/vueArticle.php';
+    require 'Vue/vueCompte.php';
 }
 
 // Ajoute un commentaire à un article
