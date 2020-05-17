@@ -23,7 +23,7 @@ function setCompte($compteTemp) {
 }
 
 // Renvoie les informations sur un compte
-function getArticle($idCompte) {
+function getCompte($idCompte) {
     $bdd = getBdd();
     $compte = $bdd->prepare('select * from compte'
             . ' where ID_Compte=?');
@@ -35,41 +35,49 @@ function getArticle($idCompte) {
 }
 
 // Renvoie la liste des commentaires associés à un article
-function getCommentaires($idPaiements) {
+function getPaiements($idPaiements) {
     $bdd = getBdd();
-    $paiements = $bdd->prepare('select * from paiements'
-            . ' where ID=?');
+    $paiements = $bdd->prepare('select * from paiement'
+            . ' where ID_Compte=?');
     $paiements->execute(array($idPaiements));
     return $paiements;
 }
 
 // Renvoie un commentaire spécifique
-function getCommentaire($id) {
+function getPaiement($id) {
     $bdd = getBdd();
-    $commentaire = $bdd->prepare('select * from Commentaires'
-            . ' where id = ?');
-    $commentaire->execute(array($id));
-    if ($commentaire->rowCount() == 1)
-        return $commentaire->fetch();  // Accès à la première ligne de résultat
+    $paiement = $bdd->prepare('select * from paiement'
+            . ' where ID = ?');
+    $paiement->execute(array($id));
+    if ($paiement->rowCount() == 1)
+        return $paiement->fetch();  // Accès à la première ligne de résultat
     else
         throw new Exception("Aucun commentaire ne correspond à l'identifiant '$id'");
-    return $commentaire;
+    return $paiement;
 }
 
 // Supprime un compte
-function deleteCommentaire($id) {
+function deletePaiement($id) {
     $bdd = getBdd();
-    $result = $bdd->prepare('DELETE FROM compte'
-            . ' WHERE ID_Compte = ?');
+    $result = $bdd->prepare('DELETE FROM paiement'
+            . ' WHERE ID = ?');
     $result->execute(array($id));
     return $result;
 }
 
-// Ajoute un commentaire associés à un article
-function setCommentaire($commentaire) {
+function modifierPaiement($post) {
     $bdd = getBdd();
-    $result = $bdd->prepare('INSERT INTO commentaires (article_id, date, auteur, titre, texte, prive) VALUES(?, NOW(), ?, ?, ?, ?)');
-    $result->execute(array($commentaire['article_id'], $commentaire['auteur'], $commentaire['titre'], $commentaire['texte'], $commentaire['prive']));
+    $result = $bdd->prepare('UPDATE paiement SET Date = ?, Montant = ? WHERE ID = ?');
+//    $result->execute(array($id));
+    $result->execute(array($post['Date'], $post['Montant'], $post['ID']));
+    return $result;
+}
+
+// Ajoute un commentaire associés à un article
+function setPaiement($paiement) {
+    $bdd = getBdd();
+    $result = $bdd->prepare('INSERT INTO paiement (ID_Compte, Date, Montant) VALUES(?, ?, ?)');
+    $result->execute(array($paiement['ID_Compte'], $paiement['Date'], $paiement['Montant']));
     return $result;
 }
 

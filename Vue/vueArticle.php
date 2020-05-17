@@ -1,4 +1,4 @@
-<?php $titre = "Les comptes de Joseph - " . $compte['NomCompte']; ?>
+<?php $titre = "Les comptes de Joseph - " //. $compte['NomCompte']; ?>
 
 <?php ob_start(); ?>
 <article>
@@ -15,27 +15,31 @@
 <header>
     <h1 id="titreReponses">Paiements du compte <?= $compte['NomCompte'] ?> :</h1>
 </header>
+<?= ($paiements->rowCount() == 0) ? '<p>Aucun paiement</p>' : '' ?>
 <?php foreach ($paiements as $paiement): ?>
-<p><a href="index.php?action=confirmer&ID=<?= $paiement['ID'] ?>" >
+<!--never enters the foreach-->
+<article>
+<p> <a href="index.php?action=confirmer&ID=<?= $paiement['ID'] ?>">
         [Supprimer]
     </a>
-    <?= $paiement['date'] ?>, <?= $paiement['Montant'] ?> 
+    <a href="index.php?action=modifier&ID=<?= $paiement['ID'] ?>">
+        [Modifier]
+    </a>
+    <?= $paiement['Date'] ?>, <?= $paiement['Montant'] ?> 
     </p>
+</article>
 <?php endforeach; ?>
+    <form action="index.php?action=paiement" method="post">
+	<h2>Création d'un paiement</h2>
+        <p>
+            <label for="Date">Date du paiement</label> : <input type="date" name="Date" id="Date" /><br />
+            <label for="Montant">Montant du paiement</label> : <input type="number" name="Montant" id="Montant"/>
+            <input type="hidden" name="ID_Compte" value="<?=$compte['ID_Compte']?>" />
+<!--            <input type="hidden" name="ID" value="1" />-->
+            <input type="submit" value="Envoyer" />
+	</p>
+    </form>
 
-<!--<form action="index.php?action=commentaire" method="post">
-    <h2>Ajouter un commentaire</h2>
-    <p>
-        <label for="auteur">Courriel de l'auteur (xxx@yyy.zz)</label> : <input type="text" name="auteur" id="auteur" /> 
-        <?= ($erreur == 'courriel') ? '<span style="color : red;">Entrez un courriel valide s.v.p.</span>' : '' ?> 
-        <br />
-        <label for="texte">Titre</label> :  <input type="text" name="titre" id="titre" /><br />
-        <label for="texte">Commentaire</label> :  <textarea type="text" name="texte" id="texte" >Écrivez votre commentaire ici</textarea><br />
-        <label for="prive">Privé?</label><input type="checkbox" name="prive" />
-        <input type="hidden" name="article_id" value="<?= $compte['id'] ?>" /><br />
-        <input type="submit" value="Envoyer" />
-    </p>
-</form>-->
 
 <?php $contenu = ob_get_clean(); ?>
 

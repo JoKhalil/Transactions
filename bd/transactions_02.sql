@@ -57,7 +57,7 @@ INSERT INTO `compte` (`ID_Compte`, `ID_Utilisateur`, `NomCompte`, `Balance`, `Mo
 -- Structure de la table `paiements`
 --
 
-CREATE TABLE `paiements` (
+CREATE TABLE `paiement` (
   `ID` int(9) NOT NULL,
   `ID_Compte` int(10) NOT NULL,
   `Date` date NOT NULL,
@@ -98,7 +98,7 @@ ALTER TABLE `compte`
 --
 -- Index pour la table `paiements`
 --
-ALTER TABLE `paiements`
+ALTER TABLE `paiement`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ID_Compte` (`ID_Compte`) USING BTREE;
 
@@ -121,7 +121,7 @@ ALTER TABLE `compte`
 --
 -- AUTO_INCREMENT pour la table `paiements`
 --
-ALTER TABLE `paiements`
+ALTER TABLE `paiement`
   MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT;
 
 --

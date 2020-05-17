@@ -10,40 +10,51 @@ function accueil() {
 
 // Affiche les détails sur un article
 function compte($idCompte) {
-    $compte = getArticle($idCompte);
-    //$commentaires = getCommentaires($idCompte);
+    $compte = getCompte($idCompte);
+    $paiements = getPaiements($idCompte);
     require 'Vue/vueArticle.php';
 }
 
 // Ajoute un commentaire à un article
-function commentaire($commentaire) {
-    $validation_courriel = filter_var($commentaire['auteur'], FILTER_VALIDATE_EMAIL);
-    if ($validation_courriel) {
+function paiement($paiement) {
+    
         // Ajouter le commentaire à l'aide du modèle
-        setCommentaire($commentaire);
+        setPaiement($paiement);
         //Recharger la page pour mettre à jour la liste des commentaires associés
-        header('Location: index.php?action=article&id=' . $commentaire['article_id']);
-    } else {
-        //Recharger la page avec une erreur près du courriel
-        header('Location: index.php?action=article&id=' . $commentaire['article_id'] . '&erreur=courriel');
-    }
+        header('Location: index.php?action=compte&ID_Compte=' . $paiement['ID_Compte']);
+        
+    
 }
 
 // Confirmer la suppression d'un commentaire
 function confirmer($id) {
     // Lire le commentaire à l'aide du modèle
-    $commentaire = getCommentaire($id);
+    $paiement = getPaiement($id);
     require 'Vue/vueConfirmer.php';
+}
+
+function modifier($id) {
+    $paiement = getPaiement($id);
+    require 'Vue/vueModifier.php';
+}
+
+function confirmerModifier($postObject) {
+    $paiement = getPaiement($postObject['ID']);
+    
+    modifierPaiement($postObject);
+    
+    header('Location: index.php?action=compte&ID_Compte=' . $paiement['ID_Compte']);
+    
 }
 
 // Supprimer un commentaire
 function supprimer($id) {
     // Lire le commentaire afin d'obtenir le id de l'article associé
-    $commentaire = getCommentaire($id);
+    $paiement = getPaiement($id);
     // Supprimer le commentaire à l'aide du modèle
-    deleteCommentaire($id);
+    deletePaiement($id);
     //Recharger la page pour mettre à jour la liste des commentaires associés
-    header('Location: index.php?action=article&id=' . $commentaire['article_id']);
+    header('Location: index.php?action=compte&ID_Compte=' . $paiement['ID_Compte']);
 }
 
 function nouveauCompte($erreur) {

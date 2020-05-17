@@ -1,24 +1,23 @@
-<?php $titre = "Supprimer - " . $commentaire['titre']; ?>
+<?php $titre = "Supprimer - " //. $paiement['titre']; ?>
 <?php ob_start(); ?>
 <article>
     <header>
         <p><h1>
             Supprimer?
         </h1>
-        <?= $commentaire['date'] ?>, <?= $commentaire['auteur'] ?> dit : (privé? <?= $commentaire['prive'] ?>)<br/>
-        <strong><?= $commentaire['titre'] ?></strong><br/>
-        <?= $commentaire['texte'] ?>
+        Date : <?= $paiement['Date'] ?>, Montant : <?= $paiement['Montant'] ?>$<br/>
+               
         </p>
     </header>
 </article>
 
 <form action="index.php?action=supprimer" method="post">
-    <input type="hidden" name="id" value="<?= $commentaire['id'] ?>" /><br />
+    <input type="hidden" name="ID" value="<?= $paiement['ID'] ?>" /><br />
     <input type="submit" value="Oui" />
 </form>
 <form action="index.php" method="get" >
-    <input type="hidden" name="action" value="article" />
-    <input type="hidden" name="id" value="<?= $commentaire['article_id'] ?>" />
+    <input type="hidden" name="action" value="compte" />
+    <input type="hidden" name="ID_Compte" value="<?= $paiement['ID_Compte'] ?>" />
     <input type="submit" value="Annuler" />
 </form>
 <?php $contenu = ob_get_clean(); ?>

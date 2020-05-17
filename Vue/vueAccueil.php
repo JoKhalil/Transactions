@@ -5,8 +5,7 @@
         <h2>Ajouter un compte</h2>
     </a>
 	<p><a href="Vue/a_propos.html">À propos</a></p>
-<?php foreach ($comptes as $compte):
-    ?>
+<?php foreach ($comptes as $compte):?>
 
     <article>
         <header>
