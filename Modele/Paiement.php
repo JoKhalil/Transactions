@@ -8,7 +8,7 @@ class Paiement extends Modele {
         $sql = 'select * from paiement'
                 . ' where ID_Compte=?';
         
-        $paiements = $this->executerRequete($sql, array($idPaiements));
+        $paiements = $this->executerRequete($sql, array($idCompte));
         
         return $paiements;
     }
@@ -18,10 +18,11 @@ class Paiement extends Modele {
                 . ' where ID = ?';
         $paiement = $this->executerRequete($sql, array($id));
         
-        if ($paiement->rowCount() == 1)
+        if ($paiement->rowCount() == 1) {
             return $paiement->fetch();  // Accès à la première ligne de résultat
-        else
+        } else {
             throw new Exception("Aucun commentaire ne correspond à l'identifiant '$id'");
+        }
         return $paiement;
     }
 
@@ -43,9 +44,10 @@ class Paiement extends Modele {
     }
 
     // Ajoute un commentaire associés à un article
-    public function setPaiement($paiement) {
+    //if changes don't work $paiement is param and for executerRequete array($paiement[etc])
+    public function setPaiement($ID_Compte, $Date, $Montant) {
         $sql = 'INSERT INTO paiement (ID_Compte, Date, Montant) VALUES(?, ?, ?)';
-        $result = $this->executerRequete($sql, array($paiement['ID_Compte'], $paiement['Date'], $paiement['Montant']));
+        $result = $this->executerRequete($sql, array($ID_Compte, $Date, $Montant));
         
         return $result;
     }

@@ -1,4 +1,4 @@
-<?php $titre= 'Modifier'?>
+<?php $this->titre = 'Modifier'?>
 <?php ob_start(); ?>
 
 <form action="index.php?action=confirmerModifier" method="post">

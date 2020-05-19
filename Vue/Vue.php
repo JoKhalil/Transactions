@@ -10,7 +10,7 @@ class Vue {
         $this->fichier = "Vue/vue" . $action . ".php";
     }
     // Génère et affiche la vue
-    public function generer($donnees) {
+    public function generer($donnees = NULL) {
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
@@ -22,7 +22,10 @@ class Vue {
     private function genererFichier($fichier, $donnees) {
         if(file_exists($fichier)) {
             // Rend les éléments du tableau $donnees accessibles dans la vue
-            extract($donnees);
+            if ($donnees != NULL) {
+                extract($donnees);
+            }
+            
             // Démarrage de la temporisation de sortie
             ob_start();
             // Inclut le fichier vue

@@ -1,4 +1,4 @@
-<?php $titre = "Supprimer - " //. $paiement['titre']; ?>
+<?php $this->titre = "Supprimer - " //. $paiement['titre']; ?>
 <?php ob_start(); ?>
 <article>
     <header>

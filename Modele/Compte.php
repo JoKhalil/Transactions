@@ -21,11 +21,11 @@ class Compte extends Modele {
             throw new Exception("Aucun compte ne correspond à l'identifiant '$idCompte'");
     }
     
-    public function setCompte($compteTemp) {
+    public function setCompte($compte) {
         $sql = 'INSERT INTO compte (NomCompte, TypeDeCompte, ID_Utilisateur, Balance, MotDePasse, EmailCompte) VALUES(?, ?, ?, ?, ?, ?)';
         
-        $result = $this->executerRequete($sql, array($compteTemp[NomCompte], $compteTemp[TypeDeCompte], 
-            $compteTemp[ID_Utilisateur], $compteTemp[Balance], $compteTemp[MotDePasse], $compteTemp[EmailCompte]));
+        $result = $this->executerRequete($sql, array($compte[NomCompte], $compte[TypeDeCompte], 
+            $compte[ID_Utilisateur], $compte[Balance], $compte[MotDePasse], $compte[EmailCompte]));
         
         return $result;
     }

@@ -1,4 +1,4 @@
-<?php $titre = "Les comptes de Joseph - "; //. $compte['NomCompte']; ?>
+<?php $this->titre = "Les comptes de Joseph - "; //. $compte['NomCompte']; ?>
 
 <?php ob_start(); ?>
 

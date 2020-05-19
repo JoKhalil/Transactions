@@ -1,4 +1,4 @@
-<?php $titre = 'Erreur'; ?>
+<?php $this->titre = 'Erreur'; ?>
 
 <?php ob_start() ?>
 <p>Une erreur est survenue : <?= $msgErreur ?></p>
