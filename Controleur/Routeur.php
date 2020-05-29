@@ -33,7 +33,6 @@ class Routeur {
                     $this->ctrlCompte->nouveauCompte($erreur);
                                    
                 } else if ($actionRequete == 'ajouter') {
-                    $compte = $_POST;
                     $idUtilisateur = intval($this->getParametre($_POST, 'ID_Utilisateur'));
                     if ($idUtilisateur != 0 ) {
                         $this->getParametre($_POST, 'TypeDeCompte');
@@ -55,6 +54,7 @@ class Routeur {
                     } else {
                         throw new Exception("Identifiant de compte non valide");
                     }
+                    
                 } else if ($actionRequete == 'supprimer') {
                     $id = intval($this->getParametre($_POST, 'ID'));
                     if ($id != 0) {
@@ -62,6 +62,7 @@ class Routeur {
                     } else {
                         throw new Exception("Identifiant de paiement non valide");
                     }
+                    
                 } else if ($actionRequete == 'confirmer') {
                     $id = intval($this->getParametre($_POST, 'ID'));
                     if ($id != 0) {
@@ -69,12 +70,14 @@ class Routeur {
                     } else {
                         throw new Exception("Identifiant de paiement non valide");
                     }
+                    
                 } else if ($actionRequete == 'modifer') {
                     $id = intval($this->getParametre($_GET, 'ID'));
                     if ($id != 0) {
                         $this->ctrlPaiement->modifier($id);
                     } else
                         throw new Exception("Identifiant d'article non valide");
+                    
                 } else if ($actionRequete == 'confirmerModifier') {
                     $id = intval($this->getParametre($_POST, 'ID'));
                     if ($id != 0) {

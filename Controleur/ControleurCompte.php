@@ -40,11 +40,10 @@ class ControleurCompte {
         } else if(!$validation_montant) {
             header('Location: index.php?action=nouveauCompte' . '&erreur=montant');
         } else {
-            $this->compte->setCompte($compte);
-            
-            header('Location: index.php');
+            $this->compte->setCompte($compte);         
         }
-        //$this->comptes();
+        //header('Location: index.php');
+        $this->comptes();
     }
     
 //    public function ajoutPaiement($paiement) {

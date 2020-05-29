@@ -5,7 +5,7 @@ require_once 'Modele/Modele.php';
 class Compte extends Modele {
     
     public function getComptes() {
-        $sql = 'SELECT * FROM compte ORDER BY ID_Compte DESC LIMIT 0, 10';
+        $sql = 'SELECT * FROM compte ORDER BY ID_Compte DESC';
         $comptes = $this->executerRequete($sql);
         return $comptes;
     }
@@ -25,8 +25,8 @@ class Compte extends Modele {
     public function setCompte($compte) {
         $sql = 'INSERT INTO compte (NomCompte, TypeDeCompte, ID_Utilisateur, Balance, MotDePasse, EmailCompte) VALUES(?, ?, ?, ?, ?, ?)';
         
-        $result = $this->executerRequete($sql, array($compte[NomCompte], $compte[TypeDeCompte], 
-            $compte[ID_Utilisateur], $compte[Balance], $compte[MotDePasse], $compte[EmailCompte]));
+        $result = $this->executerRequete($sql, array($compte['NomCompte'], $compte['TypeDeCompte'], 
+            $compte['ID_Utilisateur'], $compte['Balance'], $compte['MotDePasse'], $compte['EmailCompte']));
         
         return $result;
     }

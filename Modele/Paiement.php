@@ -43,7 +43,7 @@ class Paiement extends Modele {
         return $result;
     }
 
-    // Ajoute un commentaire associés à un article
+    
     //if changes don't work $paiement is param and for executerRequete array($paiement[etc])
     public function setPaiement($paiement) {
         $sql = 'INSERT INTO paiement (ID_Compte, Date, Montant) VALUES(?, ?, ?)';

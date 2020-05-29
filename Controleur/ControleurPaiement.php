@@ -5,11 +5,13 @@ require_once 'Vue/Vue.php';
 class ControleurPaiement {
     
     public function ajoutPaiement($paiement) {
+        throw new Exception($paiement['ID']);
         $this->paiement->setPaiement($paiement);
-        header('Location: index.php?action=compte&ID_Compte=' . $paiement[ID_Compte]);
+        
+        //header('Location: index.php?action=compte&ID_Compte=' . $paiement[ID_Compte]);
         //$vue = new Vue("Compte");
         //$vue->generer();
-        //$this->compte($idCompte);
+        $this->ctrlCompte->compte($paiement[ID_Compte]);
     }
     
     public function supprimerPaiement($id){
