@@ -21,9 +21,9 @@ class ControleurPaiement {
     public function ajoutPaiement($paiement) {
         
         $this->paiement->setPaiement($paiement);
-       // throw new Exception($paiement['ID_Compte']);
+        //throw new Exception($paiement['ID_Compte']);
+        header('Location: index.php?action=compte&ID_Compte=' . $paiement['ID_Compte']);
         
-        $this->ctrlCompte->compte($paiement);
     }
     
     public function supprimerPaiement($id){
