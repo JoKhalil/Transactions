@@ -3,15 +3,27 @@ require_once 'Modele/Paiement.php';
 require_once 'Vue/Vue.php';
 
 class ControleurPaiement {
+    private $paiement;
+    private $compte;
+    
+    public function __construct() {
+        $this->paiement = new Paiement();
+        $this->compte = new Compte();
+    }
+    
+    public function compte($idCompte) {
+        $compte = $this->compte->getCompte($idCompte);
+        $paiements = $this->paiement->getPaiements($idCompte);
+        $vue = new Vue("Compte");
+        $vue->generer(array('compte' => $compte, 'paiements' => $paiements));
+    }
     
     public function ajoutPaiement($paiement) {
-        throw new Exception($paiement['ID']);
-        $this->paiement->setPaiement($paiement);
         
-        //header('Location: index.php?action=compte&ID_Compte=' . $paiement[ID_Compte]);
-        //$vue = new Vue("Compte");
-        //$vue->generer();
-        $this->ctrlCompte->compte($paiement[ID_Compte]);
+        $this->paiement->setPaiement($paiement);
+       // throw new Exception($paiement['ID_Compte']);
+        
+        $this->ctrlCompte->compte($paiement);
     }
     
     public function supprimerPaiement($id){
