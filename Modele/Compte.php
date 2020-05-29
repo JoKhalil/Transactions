@@ -15,10 +15,11 @@ class Compte extends Modele {
                 . ' where ID_Compte=?';
         $compte = $this->executerRequete($sql, array($idCompte));
       
-        if ($compte->rowCount() == 1)
+        if ($compte->rowCount() == 1) {
             return $compte->fetch();  // Accès à la première ligne de résultat
-        else
+        } else {
             throw new Exception("Aucun compte ne correspond à l'identifiant '$idCompte'");
+        }
     }
     
     public function setCompte($compte) {

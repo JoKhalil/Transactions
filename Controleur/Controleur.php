@@ -5,7 +5,7 @@ require 'Modele/Modele.php';
 // Affiche la liste de tous les comptes
 function accueil() {
     $comptes = getComptes();
-    require 'Vue/vueAccueil.php';
+    require 'Vue/vueComptes.php';
 }
 
 // Affiche les détails sur un article

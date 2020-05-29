@@ -1,5 +1,5 @@
 <?php $this->titre = 'Les comptes de Joseph'; ?> 
-<!--$titre is empty cannot access with $this->-->
+
 
 <?php ob_start(); ?>
 <a href="index.php?action=nouveauCompte">

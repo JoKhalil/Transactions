@@ -19,6 +19,12 @@ class ControleurCompte {
         $vue->generer(array('compte' => $compte, 'paiements' => $paiements));
     }
     
+    public function comptes() {
+        $comptes = $this->compte->getComptes();
+        $vue = new Vue("Comptes");
+        $vue->generer(array('comptes' => $comptes));
+    }
+    
     public function nouveauCompte($erreur) {
         $vue = new Vue("AjouterCompte");
         $vue->generer();
@@ -35,12 +41,44 @@ class ControleurCompte {
             header('Location: index.php?action=nouveauCompte' . '&erreur=montant');
         } else {
             $this->compte->setCompte($compte);
+            
             header('Location: index.php');
         }
+        //$this->comptes();
     }
     
-    public function ajoutPaiement($idCompte, $Date, $Montant) {
-        $this->paiement->setPaiement($idCompte, $Date, $Montant);
-        $this->compte($idCompte);
-    }
+//    public function ajoutPaiement($paiement) {
+//        $this->paiement->setPaiement($paiement);
+//        header('Location: index.php?action=compte&ID_Compte=' . $paiement[ID_Compte]);
+//        //$vue = new Vue("Compte");
+//        //$vue->generer();
+//        //$this->compte($idCompte);
+//    }
+//    
+//    public function supprimerPaiement($id){
+//        $paiement = $this->paiement->getPaiement($id);
+//        
+//        $this->paiement->deletePaiement($id);
+//        
+//        header('Location: index.php?action=compte&ID_Compte=' . $paiement['ID_Compte']);
+//    }
+//    
+//    public function confirmer($id) {
+//        // Lire le commentaire à l'aide du modèle
+//        $paiement = $this->paiement->getPaiement($id);
+//        $vue = new Vue("Confirmer");
+//        $vue->generer(array('paiements' => $paiements));
+//    }
+//    
+//    public function modifier($id) {
+//        $paiement = $this->paiement->getPaiement($id);
+//        $vue = new Vue("Modifier");
+//        $vue->generer(array('paiement' => $paiement));
+//    }
+//    
+//    public function MAJ($postObject) {
+//        $paiement = getPaiement($postObject['ID']);
+//        $this->paiement->modifierPaiement($paiement);
+//        $this->comptes();
+//    }
 }
