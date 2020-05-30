@@ -11,6 +11,9 @@
         <div id="global">
             <header>
                 <a href="index.php"><h1 id="titreBlog">Les comptes de Joseph</h1></a>
+                <a href="tests.php">
+                    <h3>TESTS</h3>
+                </a>
             </header>
             <div id="contenu">
                 <?= $contenu ?>   <!-- Élément spécifique -->
