@@ -28,7 +28,7 @@ class ControleurPaiement {
     
     public function supprimerPaiement($id){
         $paiement = $this->paiement->getPaiement($id);
-        
+                
         $this->paiement->deletePaiement($id);
         
         header('Location: index.php?action=compte&ID_Compte=' . $paiement['ID_Compte']);
@@ -38,7 +38,7 @@ class ControleurPaiement {
         // Lire le commentaire à l'aide du modèle
         $paiement = $this->paiement->getPaiement($id);
         $vue = new Vue("Confirmer");
-        $vue->generer(array('paiements' => $paiements));
+        $vue->generer(array('paiement' => $paiement));
     }
     
     public function modifier($id) {
@@ -47,10 +47,10 @@ class ControleurPaiement {
         $vue->generer(array('paiement' => $paiement));
     }
     
-    public function MAJ($postObject) {
-        $paiement = getPaiement($postObject['ID']);
+    public function MAJ($paiement) {
+        //$paiement = getPaiement($postObject['ID']);
         $this->paiement->modifierPaiement($paiement);
-        $this->comptes();
+        header('Location: index.php?action=compte&ID_Compte=' . $paiement['ID_Compte']);
     }
 }
 

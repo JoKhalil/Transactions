@@ -23,7 +23,7 @@ class Paiement extends Modele {
         } else {
             throw new Exception("Aucun commentaire ne correspond à l'identifiant '$id'");
         }
-        return $paiement;
+        
     }
 
     // Supprime un compte
@@ -35,9 +35,9 @@ class Paiement extends Modele {
         return $result;
     }
 
-    public function modifierPaiement($post) {
+    public function modifierPaiement($paiement) {
         $sql = 'UPDATE paiement SET Date = ?, Montant = ? WHERE ID = ?';
-        $result = $this->executerRequete($sql, array($post['Date'], $post['Montant'], $post['ID']));
+        $result = $this->executerRequete($sql, array($paiement['Date'], $paiement['Montant'], $paiement['ID']));
     //    $result->execute(array($id));
         
         return $result;

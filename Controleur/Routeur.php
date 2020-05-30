@@ -55,23 +55,23 @@ class Routeur {
                         throw new Exception("Identifiant de compte non valide");
                     }
                     
-                } else if ($actionRequete == 'supprimer') {
+                } else if ($actionRequete == 'supprimer') {                    
                     $id = intval($this->getParametre($_POST, 'ID'));
                     if ($id != 0) {
-                        $this-$this->ctrlPaiement->supprimerPaiement($id);
+                        $this->ctrlPaiement->supprimerPaiement($id);
                     } else {
                         throw new Exception("Identifiant de paiement non valide");
                     }
                     
                 } else if ($actionRequete == 'confirmer') {
-                    $id = intval($this->getParametre($_POST, 'ID'));
+                    $id = intval($this->getParametre($_GET, 'ID'));
                     if ($id != 0) {
-                        $this-$this->ctrlPaiement->confirmer($id);
+                        $this->ctrlPaiement->confirmer($id);
                     } else {
                         throw new Exception("Identifiant de paiement non valide");
                     }
                     
-                } else if ($actionRequete == 'modifer') {
+                } else if ($actionRequete == 'modifier') {
                     $id = intval($this->getParametre($_GET, 'ID'));
                     if ($id != 0) {
                         $this->ctrlPaiement->modifier($id);
