@@ -5,12 +5,30 @@ require_once 'Framework/Modele.php';
 
 class Paiement extends Modele {
     
-    public function getPaiements($idCompte) {
-        $sql = 'select * from paiement'
-                . ' where ID_Compte=?';
-        
+    public function getPaiements($idCompte = NULL) {
+        if ($idCompte == NULL) {
+            $sql = 'select p.ID, p.ID_Compte, p.Date, p.Montant'
+                    . ' c.NomCompte as nomCompte from paiement p'
+                    . ' inner join compte c on p.ID_Compte = c.ID_Compte'
+                    . ' order by ID desc';
+        } else {
+            $sql = 'select * from paiement where ID_Compte = ?'
+                    . ' order by ID desc';
+        }
+        $paiement = $this->executerRequete($sql, array($idCompte));
+        return $paiement;
+    }
+    
+    public function getPaiementsPublics($idCompte = NULL) {
+        if ($idCompte == NULL) {
+            $sql = 'select p.ID, p.ID_Compte, p.Date, p.Montant'
+                    . ' c.NomCompte as nomCompte from paiement p'
+                    . ' inner join compte c on p.ID_Compte = c.ID_Compte'
+                    . ' order by ID desc';
+        } else {
+            $sql = 'select * from paiement where ID_Compte = ? order by ID desc';
+        }
         $paiements = $this->executerRequete($sql, array($idCompte));
-        
         return $paiements;
     }
     

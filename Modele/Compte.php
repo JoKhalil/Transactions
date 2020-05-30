@@ -17,7 +17,7 @@ class Compte extends Modele {
     public function getCompte($idCompte) {
         $sql = 'select c.ID_Compte, c.ID_Utilisateur, c.NomCompte, c.Balance,'
                 . ' c.MotDePasse, c.TypeDeCompte, c.EmailCompte, u.nom'
-                . ' from comptes c inner join utilisateurs u on c.ID_Utilisateur = u.id'
+                . ' from compte c inner join utilisateurs u on c.ID_Utilisateur = u.id'
                 . ' where c.ID_Compte=?';
         
         $compte = $this->executerRequete($sql, array($idCompte));
