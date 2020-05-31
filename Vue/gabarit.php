@@ -3,6 +3,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
+        <base href="<?= $racineWeb ?>" >
         <link rel="stylesheet" href="Contenu/css/style.css" />
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
         <title><?= $titre ?></title>   <!-- Élément spécifique -->
@@ -11,10 +12,24 @@
         <div id="global">
             <header>
                 <a href="index.php"><h1 id="titreBlog">Les comptes de Joseph</h1></a>
+                <p>Version avec démarrage de session pour accès aux opérations de gestion</p>
+                <a href="<?= $utilisateur != '' ? 'Admin' : ''; ?>Paiements">
+                    <h4>Afficher tous les paiements de tous les comptes</h4>
+                </a>
+                <a href="apropos">
+                    <h4>À propos</h4>
+                </a>
                 <a href="tests.php">
                     <h3>TESTS</h3>
                 </a>
             </header>
+            <?php if ($utilisateur != '') : ?>
+                <h3>Bonjour <?= $utilisateur ?>,
+                    <a href="Utilisateurs/deconnecter"><small>[Se déconnecter]</small></a>
+                </h3>
+            <?php else : ?>
+            <h3>[<a href="Utilisateurs/index">Se connecter</a>] <small>(admin/admin)</small></h3>
+            <?php endif; ?>
             <div id="contenu">
                 <?= $contenu ?>   <!-- Élément spécifique -->
             </div> <!-- #contenu -->

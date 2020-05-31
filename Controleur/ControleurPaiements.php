@@ -20,7 +20,7 @@ class ControleurPaiement {
     public function ajouter() {
         $paiement['ID_Compte'] = $this->requete->getParametreId("ID_Compte");
                 
-            
+            //don't forget validations 
         if ($this->requete->getSession()->getAttribut("env") == 'prod') {
             $this->requete->getSession()->setAttribut("message", "Ajouter un paiement n'est pas permis en démonstration");
             } else {

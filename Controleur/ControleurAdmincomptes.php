@@ -52,26 +52,26 @@ class ControleurAdminComptes extends ControleurAdmin {
 
 // Modifier un article existant 
     //POUR LE PAIEMENT
-    public function modifier() {
-        $id = $this->requete->getParametreId('id');
-        $article = $this->compte->getArticle($id);
-        $this->genererVue(['article' => $article]);
-    }
-
-// Enregistre l'article modifié et retourne à la liste des articles
-    public function miseAJour() {
-        if ($this->requete->getSession()->getAttribut("env") == 'prod') {
-            $this->requete->getSession()->setAttribut("message", "Modifier un article n'est pas permis en démonstration");
-        } else {
-            $article['id'] = $this->requete->getParametreId('id');
-            $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
-            $article['titre'] = $this->requete->getParametre('titre');
-            $article['sous_titre'] = $this->requete->getParametre('sous_titre');
-            $article['texte'] = $this->requete->getParametre('texte');
-            $article['type'] = $this->requete->getParametre('type');
-            $this->compte->updateArticle($article);
-            $this->executerAction('index');
-        }
-    }
+//    public function modifier() {
+//        $id = $this->requete->getParametreId('id');
+//        $article = $this->compte->getArticle($id);
+//        $this->genererVue(['article' => $article]);
+//    }
+//
+//// Enregistre l'article modifié et retourne à la liste des articles
+//    public function miseAJour() {
+//        if ($this->requete->getSession()->getAttribut("env") == 'prod') {
+//            $this->requete->getSession()->setAttribut("message", "Modifier un article n'est pas permis en démonstration");
+//        } else {
+//            $article['id'] = $this->requete->getParametreId('id');
+//            $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
+//            $article['titre'] = $this->requete->getParametre('titre');
+//            $article['sous_titre'] = $this->requete->getParametre('sous_titre');
+//            $article['texte'] = $this->requete->getParametre('texte');
+//            $article['type'] = $this->requete->getParametre('type');
+//            $this->compte->updateArticle($article);
+//            $this->executerAction('index');
+//        }
+//    }
 
 }
