@@ -1,6 +1,6 @@
 <?php
-require_once 'Controleur/ControleurPaiement.php';
-require_once 'Controleur/ControleurCompte.php';
+require_once 'Controleur/ControleurPaiements.php';
+require_once 'Controleur/ControleurComptes.php';
 require_once 'Vue/Vue.php';
 
 class Routeur {
