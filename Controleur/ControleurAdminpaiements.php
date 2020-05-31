@@ -51,8 +51,8 @@ class ControleurAdminPaiements extends ControleurAdmin {
     // Modifier un article existant 
     //POUR LE PAIEMENT
     public function modifier() {
-        $id = $this->requete->getParametreId('ID');
-        $paiement = $this->compte->getPaiement($id);
+        $id = $this->requete->getParametreId('id');
+        $paiement = $this->paiement->getPaiement($id);
         $this->genererVue(['paiement' => $paiement]);
     }
 

@@ -12,12 +12,12 @@ foreach ($paiements as $paiement):
             <?= $this->nettoyer($paiement['Date']) ?>, <?= $this->nettoyer($paiement['Montant']) ?>
             
             <a href="Admincomptes/lire/<?= $this->nettoyer($paiement['ID_Compte']) ?>" >
-                <i><?= $this->nettoyer($paiement['NomCompte']) ?></i>]</a></a>
+                <i><?= $this->nettoyer($paiement['NomCompte']) ?></i></a></a>
         </p>
 
         <p class="efface"><a href="AdminPaiements/modifier/<?= $this->nettoyer($paiement['ID']) ?>" >
                 [Modifier]</a>
-            Paiement du <?= $this->nettoyer($paiement['Date']) ?>, de <?= $this->nettoyer($paiement['Montant']) ?> EFFACÉ!
+            Paiement du <?= $this->nettoyer($paiement['Date']) ?>, de <?= $this->nettoyer($paiement['Montant']) ?>
         </p>
     
 <?php endforeach; ?>
