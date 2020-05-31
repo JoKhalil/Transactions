@@ -7,7 +7,7 @@ class Paiement extends Modele {
     
     public function getPaiements($idCompte = NULL) {
         if ($idCompte == NULL) {
-            $sql = 'select p.ID, p.ID_Compte, p.Date, p.Montant'
+            $sql = 'select p.ID, p.ID_Compte, p.Date, p.Montant,'
                     . ' c.NomCompte as nomCompte from paiement p'
                     . ' inner join compte c on p.ID_Compte = c.ID_Compte'
                     . ' order by ID desc';
@@ -21,7 +21,7 @@ class Paiement extends Modele {
     
     public function getPaiementsPublics($idCompte = NULL) {
         if ($idCompte == NULL) {
-            $sql = 'select p.ID, p.ID_Compte, p.Date, p.Montant'
+            $sql = 'select p.ID, p.ID_Compte, p.Date, p.Montant,'
                     . ' c.NomCompte as nomCompte from paiement p'
                     . ' inner join compte c on p.ID_Compte = c.ID_Compte'
                     . ' order by ID desc';

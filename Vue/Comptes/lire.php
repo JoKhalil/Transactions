@@ -3,7 +3,7 @@
 <article>
     <header>
         <h1 class="titreArticle"><?= $this->nettoyer($compte['NomCompte']) ?></h1>
-        <p><?= $this->nettoyer($compte['Balance']) ?></p>, par <?= $this->nettoyer($compte['MotDePasse']) ?>
+        <p><?= $this->nettoyer($compte['Balance']) ?></p><br /> <?= $this->nettoyer($compte['MotDePasse']) ?>
         <h3 class=""><?= $this->nettoyer($compte['TypeDeCompte']) ?></h3>
     </header>
     <p><?= $this->nettoyer($compte['EmailCompte']) ?></p>

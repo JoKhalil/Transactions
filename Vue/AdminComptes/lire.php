@@ -3,7 +3,8 @@
 <article>
     <header>
         <h1 class="titreArticle"><?= $this->nettoyer($compte['NomCompte']) ?></h1>
-        <p><?= $this->nettoyer($compte['Balance']) ?></p>, par <?= $this->nettoyer($compte['MotDePasse']) ?>
+        <p><?= $this->nettoyer($compte['Balance']) ?></p><br /> 
+        <?= $this->nettoyer($compte['MotDePasse']) ?>
         <h3 class=""><?= $this->nettoyer($compte['TypeDeCompte']) ?></h3>
     </header>
     <p><?= $this->nettoyer($compte['EmailCompte']) ?></p>
@@ -20,12 +21,12 @@ foreach ($paiements as $paiement):
     
         <a href="AdminPaiements/confirmer/<?= $this->nettoyer($paiement['ID']) ?>" >
             [Effacer]</a>
-        <?= $this->nettoyer($paiement['Date']) ?>, <?= $this->nettoyer($paiement['Montant']) ?> >
+        <?= $this->nettoyer($paiement['Date']) ?>, <?= $this->nettoyer($paiement['Montant']) ?> 
         
         
     
-        <a href="AdminPaiements/modifier/<?= $this->modifier($paiement['ID']) ?>" >
-            [Modifier]</a>
+        <a href="AdminPaiements/modifier/<?= $this->nettoyer($paiement['ID']) ?>" >
+            [Modifier]</a><br />
             
         
     

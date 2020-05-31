@@ -20,15 +20,15 @@ class ControleurAdminPaiements extends ControleurAdmin {
   
 // Confirmer la suppression d'un commentaire
     public function confirmer() {
-        $id = $this->requete->getParametreId("ID");
+        $id = $this->requete->getParametreId("id");
         // Lire le commentaire à l'aide du modèle
-        $paiement = $this->paiement->getCommentaire($id);
+        $paiement = $this->paiement->getPaiement($id);
         $this->genererVue(['paiement' => $paiement]);
     }
 
 // Supprimer un commentaire
     public function supprimer() {
-        $id = $this->requete->getParametreId("ID");
+        $id = $this->requete->getParametreId("id");
         // Lire le commentaire afin d'obtenir le id de l'article associé
         $paiement = $this->paiement->getPaiement($id);
         // Supprimer le commentaire à l'aide du modèle

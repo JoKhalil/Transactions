@@ -18,7 +18,7 @@ class ControleurComptes extends Controleur{
     }
     
     public function lire() {
-        $idCompte = $this->requete->getParametreId("ID_Compte");
+        $idCompte = $this->requete->getParametre("id");
         $compte = $this->compte->getCompte($idCompte);
         $erreur = $this->requete->getSession()->existeAttribut("erreur") ? $this->requete->getsession()->getAttribut("erreur") : '';
         $paiements = $this->paiement->getPaiementsPublics($idCompte);

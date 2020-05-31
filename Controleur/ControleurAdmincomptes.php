@@ -22,14 +22,14 @@ class ControleurAdminComptes extends ControleurAdmin {
 
 // Affiche les détails sur un article
     public function lire() {
-        $idCompte = $this->requete->getParametreId("ID_Compte");
-        $compte = $this->compte->getArticle($idCompte);
+        $idCompte = $this->requete->getParametre("id");
+        $compte = $this->compte->getCompte($idCompte);
         $erreur = $this->requete->getSession()->existeAttribut("erreur") ? $this->requete->getsession()->getAttribut("erreur") : '';
         $paiements = $this->paiement->getPaiements($idCompte);
         $this->genererVue(['compte' => $compte, 'paiements' => $paiements, 'erreur' => $erreur]);
     }
 
-    public function ajouter() {
+    public function ajouterCompte() {
         $vue = new Vue("AjouterCompte");
         $this->genererVue();
     }

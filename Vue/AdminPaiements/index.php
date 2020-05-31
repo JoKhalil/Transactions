@@ -1,7 +1,7 @@
 <?php $this->titre = "Les comptes de Joseph - Paiements" ?>
 
 <header>
-    <h1 id="titreReponses">Commentaires du Blogue du prof :</h1>
+    <h1 id="titreReponses">Paiements des comptes de Joseph :</h1>
 </header>
 <?php
 foreach ($paiements as $paiement):

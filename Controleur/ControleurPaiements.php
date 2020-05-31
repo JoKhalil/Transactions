@@ -2,7 +2,7 @@
 require_once 'Framework/Controleur.php';
 require_once 'Modele/Paiement.php';
 
-class ControleurPaiement {
+class ControleurPaiements extends Controleur{
     private $paiement;
     
     
