@@ -14,8 +14,8 @@ foreach ($paiements as $paiement):
             <a href="Admincomptes/lire/<?= $this->nettoyer($paiement['ID_Compte']) ?>" >
                 <i><?= $this->nettoyer($paiement['NomCompte']) ?></i>]</a></a>
         </p>
-    
-        <p class="efface"><a href="AdminPaiements/modifier/<?= $this->nettoyer($paiement['Id']) ?>" >
+
+        <p class="efface"><a href="AdminPaiements/modifier/<?= $this->nettoyer($paiement['ID']) ?>" >
                 [Modifier]</a>
             Paiement du <?= $this->nettoyer($paiement['Date']) ?>, de <?= $this->nettoyer($paiement['Montant']) ?> EFFACÉ!
         </p>

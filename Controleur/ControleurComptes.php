@@ -40,7 +40,7 @@ class ControleurComptes extends Controleur{
 //    public function nouveauCompte($erreur) {
 //        $vue = new Vue("AjouterCompte");
 //        $vue->generer();
-////    header('Location: Vue/vueAjouterCompte.php');
+//
 //    }
 //    
 //    public function ajouter($compte) {
